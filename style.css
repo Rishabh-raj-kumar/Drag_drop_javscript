@@ -1,0 +1,142 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body{
+	height: 100vh;
+    display:grid;
+   place-items: center;
+   background: linear-gradient(rgb(1, 1, 21),rgb(0, 0, 13));
+}
+
+.drop-container{
+	width:100vw;
+	display:flex;
+	flex-wrap: wrap;
+}
+.drop--mini--zone{
+    width:50vw;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+.drop-zone {
+	position: relative;
+	width: 180px;
+	height:180px;
+	border-radius: 50%;
+	padding: 25px;
+	font-weight: 500;
+	font-size: 24px;
+	cursor: pointer;
+	color: #cccccc;
+	display: grid;
+	place-items: center;
+	background-color: transparent;
+	box-shadow: 0 0 20px rgba(7, 36, 140, 0.5);
+	transition: scale 0.5s ease-in-out;
+	background: linear-gradient(rgb(1, 1, 21),rgb(0, 0, 13));
+}
+
+.drop-zone::after{
+	content: '';
+	display: block;
+	position: absolute;
+	width:105%;
+	height:105%;
+	background: linear-gradient(red,green,yellow,blue);
+	border-radius: 50%;
+	animation: animate 5s linear infinite;
+	z-index: -1;
+}
+
+@keyframes animate {
+	0%{
+		rotate: 0deg;
+		filter: hue-rotate(0deg) blur(20px);
+	}
+	100%{
+		rotate: 360deg;
+		filter: hue-rotate(360deg) blur(20px);
+	}
+}
+
+.drop-zone--over {
+	border-style: solid;
+}
+
+.drop-zone__input {
+	display: none;
+}
+
+.drop-zone__thumb {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	overflow: hidden;
+	background-color: #cccccc;
+	background-size: cover;
+	position: relative;
+}
+
+.drop-zone__thumb::after {
+	content: attr(data-label);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 5px 0;
+	color: #ffffff;
+	background: rgba(0, 0, 0, 0.75);
+	font-size: 14px;
+	text-align: center;
+}
+
+.drop--mini-output{
+	width:50vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.drop-output{
+	width:300px;
+	height:300px;
+	background-color: #cccccc;
+	display: grid;
+	border-radius:5%;
+}
+.drop-output img{
+     width:250px;
+	 height:200px;
+	 margin: auto;
+}
+.drop-output .info-box{
+	width: 100%;
+	background: #034235;
+	font-size: 18px;
+	text-align: center;
+	padding-top:5%;
+}
+.drop-output .info-box p{
+	color: gold;
+}
+
+@media screen and  (max-width: 558px) {
+	.drop-container{
+		gap: 1rem;
+	}
+	.drop--mini--zone,.drop--mini-output{
+		width:100vw;
+	}
+
+	.drop-output{
+		width:250px;
+		height:250px;
+	}
+	.drop-output img{
+		width:200px;
+		height:200px;
+	}
+}
